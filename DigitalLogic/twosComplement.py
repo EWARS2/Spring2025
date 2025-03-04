@@ -8,7 +8,7 @@ def twos_comp(val, bits):
         val = val - (1 << bits)        # compute negative value
     return val                         # return positive value as is
 
-binary_string = '11111101'
+binary_string = '11111111'
 o = twos_comp(int(binary_string,2), 8)
 # o = twos_comp(int('0xFFFFFFFF',16), 32)
 print("Dec: ", o)
