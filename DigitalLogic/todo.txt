@@ -1,6 +1,6 @@
 Review March 4th - Things covered:
 V Hex & Bin math
-~ 2s Complement
+V 2s Complement
 - modulus (Question 5)
 - substitution cipher
 V Boolean Logic Truth tables
