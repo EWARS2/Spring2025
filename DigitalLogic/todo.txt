@@ -1,7 +1,7 @@
 Review March 4th - Things covered:
 V Hex & Bin math
 V 2s Complement
-- modulus (Question 5)
+V modulus (Question 5)
 - substitution cipher
 V Boolean Logic Truth tables
 X Logic simplification & Demorgan's theorem (Ouch, not supporting this)
