@@ -9,8 +9,8 @@ SYMS_NOT  = ['~', '-', '_']
 SYMS_AND  = ['^', '&', '*', '.']
 SYMS_OR   = ['v', '+']
 SYMS_XOR  = ['xor']
-SYMS_NAND = ['nand']
-SYMS_NOR  = ['nor']
+SYMS_NAND = ['nand'] # TODO
+SYMS_NOR  = ['nor'] # TODO
 
 # Everything to print a truth table
 def truth_table(expr):
