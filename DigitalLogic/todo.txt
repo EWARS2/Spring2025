@@ -1,9 +1,9 @@
 Review March 4th - Things covered:
-- Hex & Bin math (above)
-- 2s Complement
+V Hex & Bin math
+V 2s Complement
 - modulus (Question 5)
 - substitution cipher
-- Boolean Logic Truth tables (Dig thru old posts, already done)
-- Logic simplification & Demorgan's theorem (Ouch, not supporting this)
+V Boolean Logic Truth tables
+X Logic simplification & Demorgan's theorem (Ouch, not supporting this)
 - Karnaugh maps
 - Last question is about automaton
