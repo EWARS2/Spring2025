@@ -9,8 +9,8 @@ SYMS_NOT  = ['~', '-', '_']
 SYMS_AND  = ['^', '&', '*', '.']
 SYMS_OR   = ['v', '+']
 SYMS_XOR  = ['xor']
-SYMS_NAND = ['nand'] # TODO
-SYMS_NOR  = ['nor'] # TODO
+SYMS_NAND = ['nand']  # TODO
+SYMS_NOR  = ['nor']  # TODO
 
 # Everything to print a truth table
 def truth_table(expr):
@@ -34,7 +34,7 @@ def eval_expr(expr):
 def assess(expr):
     # Convert expression to Python statement.
     # Order of replacement matters.
-    expr.lower()
+    expr = expr.lower()
     for i in SYMS_ONLY:
         expr = expr.replace(i, " == ")
     for i in SYMS_IF:
@@ -74,4 +74,4 @@ def table(expr, var):
         print(result)
 
 # Main code
-truth_table("~(X^Y)")
+truth_table("X XOR (~Y)")
