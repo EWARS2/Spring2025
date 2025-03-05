@@ -5,7 +5,7 @@ https://stackoverflow.com/questions/16255496/format-negative-integers-in-twos-co
 import re
 def process(f, base=None):
     # Format
-    f = f.capitalize()
+    f = f.upper()
     f = f.replace('X', '*')
 
     # Guess base if unspecified
@@ -33,3 +33,4 @@ def process(f, base=None):
     print("Bin: ", bin(f % (1 << 8)))
 
 process('-108', 10)
+process('FF + FF')
