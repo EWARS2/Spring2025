@@ -12,18 +12,30 @@ SYMS_XOR  = ['xor']
 SYMS_NAND = ['nand']  # TODO
 SYMS_NOR  = ['nor']  # TODO
 
+'''
+Colors from here:
+https://stackoverflow.com/questions/287871/how-do-i-print-colored-text-to-the-terminal
+'''
+
+class col:
+    T = '\033[92m'
+    F = '\033[93m'
+    ERR = '\033[91m'
+    END = '\033[0m'
+
 # Everything to print a truth table
 def truth_table(expr):
     expr, var = eval_expr(expr)
     try:
         table(expr, var)
     except SyntaxError as e:
-        print()
+        print(col.ERR)
         print(e)
         print("Be sure to add parenthesis to NOTs.")
         print("Otherwise Python thinks you're trying to treat a NOT as a value!\n")
         print("E.g. 'Q XOR ~R' becomes 'Q XOR (~R)'")
         print("If there's an elegant way to fix this, please let me know.")
+        print(col.END)
 
 def eval_expr(expr):
     print("\nInput:             ", expr)
@@ -67,11 +79,22 @@ def table(expr, var):
     for values in itertools.product([False, True], repeat=len(var)):
         # Table Inputs
         for j in values:
+            if j:
+                print(col.T, end='')
+            else:
+                print(col.F, end='')
             print(f'{j:<10}', end=' ')
 
         # Table Outputs
         result = eval(expr, dict(zip(var, values)))
+        if result:
+            print(col.T, end='')
+        else:
+            print(col.F, end='')
         print(result)
 
+    print(col.END)
+
 # Main code
-truth_table("X XOR (~Y)")
+truth_table("(C and D) or ((~A) and B)")
+truth_table("(A ^ B) v (~C ^ D)")
