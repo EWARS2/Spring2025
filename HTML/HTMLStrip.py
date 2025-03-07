@@ -6,20 +6,24 @@ import html
 def html_strip(s="sample1<main>sample2</main>sample3"):
     # Cleanup formatting
     s = s.replace("\n", "")
-    s = s.replace("<hr>", "-----")
 
     # Parse newlines
     for i in ['br', 'p', 'article', 'aside', 'section', 'div', 'head', 'body']:
         regex = re.compile('<' + i + '.*?>')
         s = re.sub(regex, '\n', s)
 
+    # Parse underlines
+    for i in ['hr', 'h1', 'h2', 'h3']:
+        regex = re.compile('<' + i + '.*?>')
+        s = re.sub(regex, '\n-----\n', s)
+
     # Parse formatting
     for i in ['button']:
         regex = re.compile('<' + i + '.*?>')
         s = re.sub(regex, ' ', s)
 
-    # Strip CSS & HTML
-    regex = re.compile('<style.*?>.*?</style>|<.*?>', re.S)
+    # Strip CSS & JS & HTML
+    regex = re.compile('<style.*?>.*?</style>|<script.*?>.*?</script>|<.*?>', re.S)
     s = re.sub(regex, '', s)
 
     # Convert Character Entities
@@ -29,7 +33,10 @@ def html_strip(s="sample1<main>sample2</main>sample3"):
 
 if __name__ == "__main__":
     # path = input("Filepath:")
-    path = "grid.html"
-    with open(path, "r") as f:
+    path = "Wikipedia-Curl.html"
+    with open(path, "r", errors='ignore') as f:
         text = f.read()
-    print(html_strip(text))
+    text = html_strip(text)
+    print(text)
+    with open("o.txt", "w", errors='ignore') as f:
+        f.write(text)
