@@ -96,5 +96,5 @@ def table(expr, var):
     print(col.END)
 
 # Main code
-truth_table("(C and D) or ((~A) and B)")
-truth_table("(A ^ B) v (~C ^ D)")
+truth_table("(A and C) v B")
+truth_table("~(~(A AND C) AND ~B)")
