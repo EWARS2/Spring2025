@@ -1,5 +1,6 @@
 # Based on code I wrote sometime in 2021 to convert QR codes to NFOs.
 # I should probably upload that project somewhere.
+# And clean it up too. Geez, it's messy...
 
 from PIL import Image
 o = ""
