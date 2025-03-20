@@ -11,7 +11,7 @@ bob.speed(0)
 
 bob.pendown()
 for i in range(100):
-    bob.forward(100)
+    bob.forward(200)
     bob.right(91)
 
 turtle.done()
