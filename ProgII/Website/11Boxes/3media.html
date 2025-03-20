@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<!-- @Media Example -->
+<html>
+<style>
+  .special-green{
+    background-color:darkseagreen;
+    text-align:center;
+    vertical-align:middle;
+    width:100px;
+    font-family:Tahoma;
+    font-size:25px;
+  }
+  .special-overview{
+    color:aliceblue;
+    background-color: black;
+    font-size:35px;
+    text-align:center;
+    vertical-align:middle;
+    width:113px;
+    height:80px;
+  }
+  .special-brown{
+    color:aliceblue;
+    background-color:brown;
+    text-align:center;
+    vertical-align: middle;
+    width:100px;
+    font-family:Tahoma;
+    font-size:25px;
+  }
+  .div-special{
+    display:flex;
+    flex-direction:row;
+    flex:1;
+    column-gap: 10px;
+    margin:10px;
+    border-width:1px;
+    border-style:solid;
+    border-color:grey;
+    justify-content: space-between;
+  }
+  @media (max-width: 850px){
+  .div-special{
+    display:inline-table;
+    flex-direction:column;
+  }
+ 
+  }
+  .image-special{
+    height:115px;
+    width:100px;
+    object-fit:cover;
+  }
+  @media (max-width: 850px){
+  .image-special{
+    margin-bottom:5px;
+    border-width:4px;
+    border-color:black;
+  }
+
+  .item-special{
+    background-color:black;
+    color:azure;
+    width:100px;
+  }
+</style>
+<body>
+  <div class = "div-special"><h2 class="special-overview">Pets</h2>
+   <div class = "div-special">
+      <div class="special-brown">Max</div>
+      <div class="special-green"><img class = "image-special" src ="pup_sweater.jpg"></div>
+      <div class="special-green"><img class = "image-special" src ="pup_grass.jpg"></div>
+    </div>
+    <div class = "div-special">
+      <div class="special-green">Amelia</div>
+      <div class="special-brown"><img class = "image-special" src ="amela_bed.jpg"></div>
+      <div class="special-brown"><img class = "image-special" src ="christmas_amelia.jpg"></div>
+    </div>
+  </div>
+ 
+  <div class = "div-special"><h2 class="special-overview">Visual Science</h2>
+  <div class = "div-special">
+     <div class="special-brown">Animals</div>
+     <div class="special-green"><img class = "image-special" src ="chickadee_art.jpg"></div>
+     <div class="special-green"><img class = "image-special" src ="fancy_horse.jpg"></div>
+   </div>
+   <div class = "div-special">
+     <div class="special-green">Who</div>
+     <div class="special-brown"><img class = "image-special" src ="tardis_art.jpg"></div>
+     <div class="special-brown"><img class = "image-special" src ="epic_computer_who.jpg"></div>
+   </div>
+ </div>
+</body>
+ 
+</body>
+</html>
+
