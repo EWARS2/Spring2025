@@ -1,44 +1,17 @@
 <!DOCTYPE html>
-
-<!-- @Media Example -->
 <html>
 <style>
-  .special-green{
-    background-color:darkseagreen;
-    text-align:center;
-    vertical-align:middle;
-    width:100px;
-    font-family:Tahoma;
-    font-size:25px;
-  }
-  .special-overview{
-    color:aliceblue;
-    background-color: black;
-    font-size:35px;
-    text-align:center;
-    vertical-align:middle;
-    width:113px;
-    height:80px;
-  }
-  .special-brown{
-    color:aliceblue;
-    background-color:brown;
-    text-align:center;
-    vertical-align: middle;
-    width:100px;
-    font-family:Tahoma;
-    font-size:25px;
-  }
-  .div-special{
-    display:flex;
-    flex-direction:row;
-    flex:1;
-    column-gap: 10px;
-    margin:10px;
-    border-width:1px;
-    border-style:solid;
-    border-color:grey;
+  .div-special {
+	display: flex;
+    flex-direction: row;
+    flex: 1;
+	column-gap: 10px;
+    margin: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: whitesmoke darkgrey darkgrey whitesmoke;
     justify-content: space-between;
+	background-color: lightgrey;
   }
   @media (max-width: 850px){
 	  .div-special{
@@ -46,53 +19,43 @@
 		flex-direction:column;
 	  }
   }
-  .image-special{
-    height:115px;
-    width:100px;
+  .item {
     object-fit:cover;
+	border-color:black;
+	border-width: 2px;
+	border-style: solid;
+    border-color: darkgrey white white darkgrey;
+	background-color: grey;
+	width: 32px;
   }
   @media (max-width: 850px){
-	  .image-special{
+	  .item {
+		display:inline-table;
 		margin-bottom:5px;
-		border-width:4px;
-		border-color:black;
-	  }
-
-	  .item-special{
-		background-color:black;
-		color:azure;
-		width:100px;
 	  }
   }
 </style>
 <body>
-  <div class = "div-special"><h2 class="special-overview">Pets</h2>
-   <div class = "div-special">
-      <div class="special-brown">Max</div>
-      <div class="special-green"><img class = "image-special" src ="https://minecraft.wiki/images/thumb/Enchanting_Table_JE4_BE2.png/30px-Enchanting_Table_JE4_BE2.png"></div>
-      <div class="special-green"><img class = "image-special" src ="pup_grass.jpg"></div>
-    </div>
-    <div class = "div-special">
-      <div class="special-green">Amelia</div>
-      <div class="special-brown"><img class = "image-special" src ="amela_bed.jpg"></div>
-      <div class="special-brown"><img class = "image-special" src ="christmas_amelia.jpg"></div>
-    </div>
-  </div>
- 
-  <div class = "div-special"><h2 class="special-overview">Visual Science</h2>
-  <div class = "div-special">
-     <div class="special-brown">Animals</div>
-     <div class="special-green"><img class = "image-special" src ="chickadee_art.jpg"></div>
-     <div class="special-green"><img class = "image-special" src ="fancy_horse.jpg"></div>
-   </div>
-   <div class = "div-special">
-     <div class="special-green">Who</div>
-     <div class="special-brown"><img class = "image-special" src ="tardis_art.jpg"></div>
-     <div class="special-brown"><img class = "image-special" src ="epic_computer_who.jpg"></div>
-   </div>
- </div>
-</body>
- 
+
+<div class = "div-special">
+<h1>Cool Minecraft Items</h1>
+<div><img class = "item" src ="https://minecraft.wiki/images/thumb/Enchanting_Table_JE4_BE2.png/30px-Enchanting_Table_JE4_BE2.png"></div>
+<div><img class = "item" src ="https://minecraft.wiki/images/thumb/Poisonous_Potato_Ore.png/30px-Poisonous_Potato_Ore.png"></div>
+<div><img class = "item" src ="https://minecraft.wiki/images/Invicon_Quiver.png"></div>
+<div><img class = "item" src ="https://minecraft.wiki/images/thumb/Clockwise_Gear_%28N%29.gif/30px-Clockwise_Gear_%28N%29.gif?d648f"></div>
+<div><img class = "item" src ="https://minecraft.wiki/images/thumb/Structure_Air_%28held%29_BE1.png/30px-Structure_Air_%28held%29_BE1.png?c70c6"></div>
+<div><img class = "item" src ="https://minecraft.wiki/images/thumb/Missing_Tile_BE1.png/30px-Missing_Tile_BE1.png?0d8b4"></div>
+<div><img class = "item" src ="https://minecraft.wiki/images/thumb/Allow_BE1.png/30px-Allow_BE1.png?12b72"></div>
+<div><img class = "item" src ="https://minecraft.wiki/images/Invicon_Amber_Gem.png?67018"></div>
+<div><img class = "item" src ="https://minecraft.wiki/images/Invicon_Corrupted_Potato_Peels.png?0765d"></div>
+<div><img class = "item" src ="https://minecraft.wiki/images/Invicon_Enchanted_Golden_Poisonous_Potato.gif?2119a"></div>
+<div><img class = "item" src ="https://minecraft.wiki/images/Invicon_Splash_Bottle_of_Entity.png?b7e3b"></div>
+<div><img class = "item" src ="https://minecraft.wiki/images/Invicon_Le_Tricolore.png?68e59"></div>
+<div><img class = "item" src ="https://minecraft.wiki/images/Invicon_Dupe_Hack.png?11966"></div>
+<div><img class = "item" src ="https://minecraft.wiki/images/Invicon_Tag.png?e29dc"></div>
+<div><img class = "item" src ="https://minecraft.wiki/images/thumb/Etho_Slab.png/30px-Etho_Slab.png"></div>
+</div>
+
 </body>
 </html>
 
