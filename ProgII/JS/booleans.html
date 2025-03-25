@@ -41,6 +41,17 @@
 	// Ternary operand
 	const result = true ? 'truthy' : 'falsy';
 	console.log(result);
+	
+	/**
+	Note about &&;
+	Evaluated from left to right.
+	So to write faster code, it's good practice to put the
+	quicker evaluated equation on the left.
+	**/
+	
+	// && as a guard operator
+	false && console.log('hello');
+	
 </script>
 </body>
 </html>
