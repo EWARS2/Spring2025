@@ -1,0 +1,25 @@
+NMVMVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVNVM
+VVV                                  NVN
+MMV                                  VVN
+V                                      V
+V   VVVV  V VVV  VVV   VV  VVVV V  V   V
+V   V  VV V V VV V  V VV   V  V VV V   V
+V   V   V V V  V V  V V    V  V V VV   V
+V   VVVVV V VVV  V  V VVV  V  V V  V   V
+V   V   V V V  V V  V   V  V  V V  V   V
+V   V  VV V V  V V  V  VV  V  V V  V   V
+V   VVVV  V V  V VVV  VV   VVVV V  V   V
+V                                      V
+V                           V     V    V
+V   VVV V VVV  VVV          VVVVVVV    V
+V   V   V V VV V            V VVV V    V
+V   V   V V  V V            VVVVVVV    V
+V   VVV V VVV  VVV          VVVVVVV    V
+V   V   V V  V V           NVVNMNVVM   V
+V   V   V V  V V          NVVNNNNNVVM  V
+V   V   V V  V VVV        VVVNNNNNVVV  V
+V                         VVVNNNNNVVV  V
+V S                        VVNNNNNVV S V
+NNV                         VNNNNNV  VMM
+VVV                          VNNNV   VVV
+MNNVVVVVVVVVVVVVVVVVVVVVVVVV V   V VVMMN
