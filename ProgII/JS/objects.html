@@ -46,6 +46,25 @@
 	score = JSON.parse(localStorage.getItem('score'));
 	localStorage.removeItem('score');
 	
+	const obj4 = {
+		message: 'toothpaste',
+		price: 799
+	}
+	let {message, price} = obj4;
+	console.log(message);
+	console.log(price);
+	
+	const obj5 = {
+		message,
+		//method: function function1() {
+		//	console.log('method');
+		//}
+		method() {
+			console.log('method, but shorter');
+		}
+	}
+	console.log(obj5);
+	obj5.method();
 	
 </script>
 </body>
