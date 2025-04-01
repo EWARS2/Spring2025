@@ -37,6 +37,13 @@
 	
 	console.log(wtf['why can I do this']);
 	
+	// localstorage only supports strings
+	localStorage.setItem('message', 'hello');
+	console.log(localStorage.getItem('message'));
+	
+	score = 21;
+	localStorage.setItem('score', JSON.stringify(score));
+	
 </script>
 </body>
 </html>
