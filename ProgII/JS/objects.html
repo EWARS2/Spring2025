@@ -41,8 +41,11 @@
 	localStorage.setItem('message', 'hello');
 	console.log(localStorage.getItem('message'));
 	
-	score = 21;
+	let score = 21;
 	localStorage.setItem('score', JSON.stringify(score));
+	score = JSON.parse(localStorage.getItem('score'));
+	localStorage.removeItem('score');
+	
 	
 </script>
 </body>
