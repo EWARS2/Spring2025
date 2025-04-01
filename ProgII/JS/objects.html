@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Objects</title>
+</head>
+
+<body>
+<script>
+	const product = {
+		name: 'socks',
+		price: 1090
+	};
+	console.log(product);
+	console.log(product.name);
+	console.log(product.price);
+	
+	product.name = 'cotton socks';
+	console.log(product);
+	
+	console.log(product.notExist); // Returns Undefined
+	product.newProperty = true;
+	console.log(product.newProperty);
+</script>
+</body>
+</html>
