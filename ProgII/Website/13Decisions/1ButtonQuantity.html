@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-<title>Javascript - Automatic</title>
+<title>Applause</title>
 </head>
-
 <body>
 
 <p>
-1. Show how to integrate Javascript code that will run automatically when the website is launched.
+1. Show how to use buttons on a webpage to update some quantity that you want to keep track of.
 </p>
 
-<img height=100 src="https://cdn.discordapp.com/attachments/1021435588404068382/1356625545508683806/GlYnzJlbkAAhxyi.jpg?ex=67ed3f7e&is=67ebedfe&hm=bdd87bc50ddf4f39a4634ad7b9f8bbfb731ca21f0dbdb3721629a471b93cd10a&">
+<button onclick="
+	clap();
+">&#128079 Click Me!</button>
 
 <script>
-	alert("Bazinga - You've got info in the console!");
-	console.log("9 + 10 = 21");
-	console.log("77 + 33 = 100");
-	console.log();
-	console.log("Epic automatic math-ing");
-	console.log();
-	console.log("Bill, I just have one question for you.");
-	console.log("What is it Ted?");
-	console.log("What color *is* an orange?");
-	console.log("Ted, you bonehead, its color is the same as its name! Just like a lemon.")
+	let count = 0;
+	count = JSON.parse(localStorage.getItem('count'));
+	
+	function clap() {
+		count += 1;
+		document.querySelector('button').innerHTML = "&#128079 " + count;
+		localStorage.setItem('count', JSON.stringify(count));
+	}
+	
 </script>
 
 </body>
