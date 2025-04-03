@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Javascript - Button</title>
+</head>
+
+<body>
+
+<p>
+2. Show how to integrate Javascript code with a button.
+</p>
+
+<button onclick="
+	reset();
+">Reset</button>
+
+<button onclick="
+	attack();
+">Attack</button>
+
+<button onclick="
+	block();
+">Block</button>
+
+
+<script>
+	let myHP = 10;
+	let myAtt = 1;
+	let myBlock = false;
+	let enemyHP = 10;
+	let enemyAtt = 1;
+
+	function reset() {
+		myHP = 10;
+		myAtt = 2;
+		myBlock = false;
+		enemyHP = 10;
+		enemyAtt = 2;
+	}
+	
+	function info() {
+		alert(`HP: ${myHP} - Enemy HP: ${enemyHP}`);
+	}
+	
+	function turn() {
+		myHP -= Math.round(Math.random()) * enemyAtt * !myBlock;
+		myBlock = false;
+		info()
+		if (myHP <= 0) {
+			alert("You died! Game Over.");
+			reset();
+		} else if (enemyHP <= 0) {
+			alert("You win!");
+			reset();
+		}
+	}
+	
+	function block() {
+		myBlock = true;
+		turn()
+	}
+	
+	function attack() {
+		enemyHP -= myAtt;
+		turn()
+	}
+	
+</script>
+</body>
+</html>
