@@ -2,68 +2,96 @@
 <html>
 
 <head>
-<title>Javascript - Button</title>
+<title>Cookie Clicker Sequel</title>
 </head>
 
 <body>
 
 <p>
-2. Show how to integrate Javascript code with a button.
+2. Show how to add a fun game-like feature to your app.
 </p>
+
+<p>
+Button Clicker - The Idle game that competes with Idol games! (Which isn't hard to do) That also doesn't play idly! (Whoops)
+</p>
+<p>
+Upgrades cost as much as the current upgrade, and upgrade-upgrades cost the current upgrade. Play it and you'll understand, I hope.
+See if you can develop a strategy to minimize clicks, while maximizing count.
+</p>
+
+<p class="count">Click the button to start!</p>
+<p class="multiplier"></p>
+<p class="multiplier_multiplier"></p>
+
+<button onclick="
+	clicked();
+">Click Me!</button>
+
+<button onclick="
+	upgrade();
+">Upgrade</button>
+
+<button onclick="
+	upgrade_upgrade();
+">Upgrade the upgrade</button>
 
 <button onclick="
 	reset();
 ">Reset</button>
 
-<button onclick="
-	attack();
-">Attack</button>
-
-<button onclick="
-	block();
-">Block</button>
-
-
 <script>
-	let myHP = 10;
-	let myAtt = 1;
-	let myBlock = false;
-	let enemyHP = 10;
-	let enemyAtt = 1;
-
+	let count = 0;
+	let multiplier = 1;
+	let multiplier_multiplier = 1;
+	
+	count = JSON.parse(localStorage.getItem('count'));
+	multiplier = JSON.parse(localStorage.getItem('multiplier'));
+	multiplier_multiplier = JSON.parse(localStorage.getItem('multiplier_multiplier'));
+	
+	if (multiplier <= 0) {
+		multiplier = 1;
+	}
+	
+	if (multiplier_multiplier <= 0) {
+		multiplier_multiplier = 1;
+	}
+	
 	function reset() {
-		myHP = 10;
-		myAtt = 2;
-		myBlock = false;
-		enemyHP = 10;
-		enemyAtt = 2;
+		count = 0;
+		multiplier = 1;
+		multiplier_multiplier = 1;
+		update();
 	}
 	
-	function info() {
-		alert(`HP: ${myHP} - Enemy HP: ${enemyHP}`);
+	function update() {
+		document.querySelector('.count').innerHTML = "Clicks: " + count;
+		document.querySelector('.multiplier').innerHTML = "Multiplier: " + multiplier;
+		document.querySelector('.multiplier_multiplier').innerHTML = "Multiplier Multiplier: " + multiplier_multiplier;
 	}
 	
-	function turn() {
-		myHP -= Math.round(Math.random()) * enemyAtt * !myBlock;
-		myBlock = false;
-		info()
-		if (myHP <= 0) {
-			alert("You died! Game Over.");
-			reset();
-		} else if (enemyHP <= 0) {
-			alert("You win!");
-			reset();
+	// Why is click a built in function?! Argh...
+	function clicked() {
+		count += multiplier;
+		localStorage.setItem('count', JSON.stringify(count));
+		update();
+	}
+	
+	function upgrade() {
+		if (count >= multiplier) {
+			count -= multiplier;
+			multiplier += multiplier_multiplier;
+			localStorage.setItem('multiplier', JSON.stringify(multiplier));
+			update();
 		}
 	}
 	
-	function block() {
-		myBlock = true;
-		turn()
-	}
-	
-	function attack() {
-		enemyHP -= myAtt;
-		turn()
+	function upgrade_upgrade() {
+		if (multiplier > multiplier_multiplier) {
+			multiplier -= multiplier_multiplier;
+			multiplier_multiplier += 1;
+			localStorage.setItem('multiplier_multiplier', JSON.stringify(multiplier_multiplier));
+			update();
+		}
 	}
 	
 </script>
