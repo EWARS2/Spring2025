@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DOM (Document Object Model)</title>
+</head>
+<body>
+
+<button>MyButton1</button>
+<button class="js-button">Second Button</button>
+<button class="js-button">3rd Button</button>
+    
+<script>
+	console.log(document.querySelector('button').innerHTML);
+	document.querySelector('button').innerHTML = 'Changed';
+	
+	document.querySelector('.js-button').innerHTML = 'Changed';
+	
+	// Don't mind me, just trying to make self modifying code in JS...
+	document.querySelector('script').innerHTML = 'fromage: console.log("Test");';
+	//while (true) { continue fromage; }
+	console.log('end');
+
+</script>
+</body>
+</html>
