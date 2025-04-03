@@ -1655,7 +1655,22 @@ game
 .
  ; 
 
-.L03 ;  dim _Bit7_Flip_P1  =  y
+.
+ ; 
+
+.L03 ;  dim _up = a
+
+.L04 ;  dim _down = b
+
+.L05 ;  dim _left = c
+
+.L06 ;  dim _right = d
+
+.
+ ; 
+
+.
+ ; 
 
 .
  ; 
@@ -1663,31 +1678,31 @@ game
 .__reset
  ; __reset
 
-.L04 ;  COLUPF = $00
+.L07 ;  COLUPF = $06
 
-	LDA #$00
+	LDA #$06
 	STA COLUPF
-.L05 ;  COLUBK = $0E
+.L08 ;  COLUBK = $0E
 
 	LDA #$0E
 	STA COLUBK
-.L06 ;  scorecolor = $06
+.L09 ;  scorecolor = $00
 
-	LDA #$06
+	LDA #$00
 	STA scorecolor
-.L07 ;  player0y = 55
+.L010 ;  player0y = 55
 
 	LDA #55
 	STA player0y
-.L08 ;  player0x = 41
+.L011 ;  player0x = 41
 
 	LDA #41
 	STA player0x
-.L09 ;  player1x = 0
+.L012 ;  player1x = 0
 
 	LDA #0
 	STA player1x
-.L010 ;  score = 0
+.L013 ;  score = 0
 
 	LDA #$00
 	STA score+2
@@ -1698,7 +1713,7 @@ game
 .
  ; 
 
-.L011 ;  gosub __pidle
+.L014 ;  gosub __pidle
 
  jsr .__pidle
 
@@ -1717,19 +1732,19 @@ game
 .
  ; 
 
-.L012 ;  drawscreen
+.L015 ;  drawscreen
 
  jsr drawscreen
-.L013 ;  if switchreset then goto __reset
+.L016 ;  if switchreset then goto __reset
 
  lda #1
  bit SWCHB
-	BNE .skipL013
+	BNE .skipL016
 .condpart0
  jmp .__reset
 
-.skipL013
-.L014 ;  goto __mainloop
+.skipL016
+.L017 ;  goto __mainloop
 
  jmp .__mainloop
 
@@ -1748,11 +1763,11 @@ game
 .
  ; 
 
-.L015 ;  rem *********************
+.L018 ;  rem *********************
 
-.L016 ;  rem GFX
+.L019 ;  rem GFX
 
-.L017 ;  rem *********************
+.L020 ;  rem *********************
 
 .
  ; 
@@ -1760,20 +1775,34 @@ game
 .__pidle
  ; __pidle
 
-.L018 ;  player0:
+.L021 ;  player0:
 
-	LDX #<playerL018_0
+	LDX #<playerL021_0
 	STX player0pointerlo
-	LDA #>playerL018_0
+	LDA #>playerL021_0
 	STA player0pointerhi
 	LDA #14
 	STA player0height
-.L019 ;  return
+.L022 ;  return
 
 	RTS
 .
  ; 
 
+.__pwalk
+ ; __pwalk
+
+.L023 ;  player0:
+
+	LDX #<playerL023_0
+	STX player0pointerlo
+	LDA #>playerL023_0
+	STA player0pointerhi
+	LDA #15
+	STA player0height
+.L024 ;  return
+
+	RTS
 .
  ; 
 
@@ -1797,7 +1826,7 @@ game
 	.byte 0
 	repend
 	endif
-playerL018_0
+playerL021_0
 	.byte  %10000011
 	.byte  %11000010
 	.byte  %00100010
@@ -1808,6 +1837,28 @@ playerL018_0
 	.byte  %00111110
 	.byte  %00111101
 	.byte  %00111101
+	.byte  %00111100
+	.byte  %00111100
+	.byte  %00111100
+	.byte  %00100000
+	.byte  %00111100
+ if (<*) > (<(*+15))
+	repeat ($100-<*)
+	.byte 0
+	repend
+	endif
+playerL023_0
+	.byte  %00101000
+	.byte  %00010000
+	.byte  %00101000
+	.byte  %00100100
+	.byte  %00111100
+	.byte  %00111100
+	.byte  %00111101
+	.byte  %01111101
+	.byte  %10111110
+	.byte  %00111100
+	.byte  %00111100
 	.byte  %00111100
 	.byte  %00111100
 	.byte  %00111100

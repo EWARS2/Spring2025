@@ -2,7 +2,14 @@
  set optimization speed
  set romsize 4k
  
- dim _Bit7_Flip_P1 = y
+ 
+ dim _up=a
+ dim _down=b
+ dim _left=c
+ dim _right=d
+ dim _frameCounter=e
+ dim _velocity=f
+ 
  
 __reset
  COLUPF=$06
@@ -16,6 +23,8 @@ __reset
  gosub __pidle
  
 __mainloop
+ rem _frameCounter=_frameCounter+1
+ rem if _frameCounter>=6 then missile0x=missile0x-_speed:score=score+_speed:_scoreTemp=_scoreTemp+_speed:_frameCounter=0
  
 
  
@@ -50,7 +59,27 @@ __pidle
  %00111100
 end
  return
- 
+
+__pwalk
+ player0:
+ %00101000
+ %00010000
+ %00101000
+ %00100100
+ %00111100
+ %00111100
+ %00111101
+ %01111101
+ %10111110
+ %00111100
+ %00111100
+ %00111100
+ %00111100
+ %00111100
+ %00100000
+ %00111100
+end
+ return
  
 
  
