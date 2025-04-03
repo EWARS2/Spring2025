@@ -26,7 +26,11 @@ __mainloop
  rem _frameCounter=_frameCounter+1
  rem if _frameCounter>=6 then missile0x=missile0x-_speed:score=score+_speed:_scoreTemp=_scoreTemp+_speed:_frameCounter=0
  
-
+ rem fix sound later lol
+ if joy0fire || joy0up then AUDC0=12:_velocity=13
+ 
+ 
+ 
  
  drawscreen
  if switchreset then goto __reset
