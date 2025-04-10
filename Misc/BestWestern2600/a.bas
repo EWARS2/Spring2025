@@ -31,6 +31,7 @@ __mainloop
  
  
  
+ if _velocity>0 then _velocity=_velocity-1
  
  drawscreen
  if switchreset then goto __reset

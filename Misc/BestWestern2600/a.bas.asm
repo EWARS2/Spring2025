@@ -1666,8 +1666,9 @@ game
 
 .L06 ;  dim _right = d
 
-.
- ; 
+.L07 ;  dim _frameCounter = e
+
+.L08 ;  dim _velocity = f
 
 .
  ; 
@@ -1678,31 +1679,31 @@ game
 .__reset
  ; __reset
 
-.L07 ;  COLUPF = $06
+.L09 ;  COLUPF = $06
 
 	LDA #$06
 	STA COLUPF
-.L08 ;  COLUBK = $0E
+.L010 ;  COLUBK = $0E
 
 	LDA #$0E
 	STA COLUBK
-.L09 ;  scorecolor = $00
+.L011 ;  scorecolor = $00
 
 	LDA #$00
 	STA scorecolor
-.L010 ;  player0y = 55
+.L012 ;  player0y = 55
 
 	LDA #55
 	STA player0y
-.L011 ;  player0x = 41
+.L013 ;  player0x = 41
 
 	LDA #41
 	STA player0x
-.L012 ;  player1x = 0
+.L014 ;  player1x = 0
 
 	LDA #0
 	STA player1x
-.L013 ;  score = 0
+.L015 ;  score = 0
 
 	LDA #$00
 	STA score+2
@@ -1713,7 +1714,7 @@ game
 .
  ; 
 
-.L014 ;  gosub __pidle
+.L016 ;  gosub __pidle
 
  jsr .__pidle
 
@@ -1723,6 +1724,31 @@ game
 .__mainloop
  ; __mainloop
 
+.L017 ;  rem _frameCounter=_frameCounter+1
+
+.L018 ;  rem if _frameCounter>=6 then missile0x=missile0x-_speed:score=score+_speed:_scoreTemp=_scoreTemp+_speed:_frameCounter=0
+
+.
+ ; 
+
+.L019 ;  rem fix sound later lol
+
+.L020 ;  if joy0fire  ||  joy0up then AUDC0 = 12 : _velocity = 13
+
+ bit INPT4
+	BMI .skipL020
+.condpart0
+ jmp .condpart1
+.skipL020
+ lda #$10
+ bit SWCHA
+	BNE .skip0OR
+.condpart1
+	LDA #12
+	STA AUDC0
+	LDA #13
+	STA _velocity
+.skip0OR
 .
  ; 
 
@@ -1732,19 +1758,30 @@ game
 .
  ; 
 
-.L015 ;  drawscreen
+.L021 ;  if _velocity > 0 then _velocity = _velocity - 1
+
+	LDA #0
+	CMP _velocity
+     BCS .skipL021
+.condpart2
+	DEC _velocity
+.skipL021
+.
+ ; 
+
+.L022 ;  drawscreen
 
  jsr drawscreen
-.L016 ;  if switchreset then goto __reset
+.L023 ;  if switchreset then goto __reset
 
  lda #1
  bit SWCHB
-	BNE .skipL016
-.condpart0
+	BNE .skipL023
+.condpart3
  jmp .__reset
 
-.skipL016
-.L017 ;  goto __mainloop
+.skipL023
+.L024 ;  goto __mainloop
 
  jmp .__mainloop
 
@@ -1763,11 +1800,11 @@ game
 .
  ; 
 
-.L018 ;  rem *********************
+.L025 ;  rem *********************
 
-.L019 ;  rem GFX
+.L026 ;  rem GFX
 
-.L020 ;  rem *********************
+.L027 ;  rem *********************
 
 .
  ; 
@@ -1775,15 +1812,15 @@ game
 .__pidle
  ; __pidle
 
-.L021 ;  player0:
+.L028 ;  player0:
 
-	LDX #<playerL021_0
+	LDX #<playerL028_0
 	STX player0pointerlo
-	LDA #>playerL021_0
+	LDA #>playerL028_0
 	STA player0pointerhi
 	LDA #14
 	STA player0height
-.L022 ;  return
+.L029 ;  return
 
 	RTS
 .
@@ -1792,15 +1829,15 @@ game
 .__pwalk
  ; __pwalk
 
-.L023 ;  player0:
+.L030 ;  player0:
 
-	LDX #<playerL023_0
+	LDX #<playerL030_0
 	STX player0pointerlo
-	LDA #>playerL023_0
+	LDA #>playerL030_0
 	STA player0pointerhi
 	LDA #15
 	STA player0height
-.L024 ;  return
+.L031 ;  return
 
 	RTS
 .
@@ -1826,7 +1863,7 @@ game
 	.byte 0
 	repend
 	endif
-playerL021_0
+playerL028_0
 	.byte  %10000011
 	.byte  %11000010
 	.byte  %00100010
@@ -1847,7 +1884,7 @@ playerL021_0
 	.byte 0
 	repend
 	endif
-playerL023_0
+playerL030_0
 	.byte  %00101000
 	.byte  %00010000
 	.byte  %00101000

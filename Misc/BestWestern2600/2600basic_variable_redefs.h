@@ -1,5 +1,9 @@
 ; This file contains variable mapping and other information for the current project.
 
+_velocity = f
+ 
+_frameCounter = e
+ 
 _right = d
  
 _left = c
