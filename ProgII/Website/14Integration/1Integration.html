@@ -5,7 +5,38 @@
 </head>
 
 <style>
+	body {
+		background-color:black;
+		color:white;
+	}
+	
+	p {
+		display: inline-block;
+		margin: 20px 75px 20px 75px;
+	}
 
+	.submit {
+		display: inline-block;
+		margin-left: 75px;
+		transition-duration: 0.5s;
+		border: none;
+		background-color: teal;
+	}
+	
+	.submit:hover {
+		background-color: purple;
+		border-radius: 4px;
+	}
+	
+	input {
+		background-color: black;
+		color: white;
+	}
+	
+	.keyOut {
+		word-wrap: break-word;
+	}
+	
 </style>
 
 
@@ -21,19 +52,44 @@
 Lessons 8 & 9
 </p>
 
-<button id="myButton">PINGAS</button>
+<hr>
 
-<input type="text" size="40" onkeydown="myFunction(event)">
+<p>
+The Konami code is the most well known instance of a "cheat code" in videogames. Originally intended to buff the player for testing Gradius on the NES, its popularity led to it being included in a handful of subsequent Konami releases (Most notably of which was Contra). From the titlescreen, you could enter it with the following sequence: Up Up Down Down Left Right Left Right B A Start.
+</p>
 
+<p>
+In an unrelated note, I think there should be a standard established for mapping a gamepad to a keyboard for emulation. For example, the left analog stick should map to WASD, and the right analog stick to the numpad. But what's probably most useful is the D-Pad mapped to the arrow keys, with ZXCV being for BAXY. Triggers should be mapped to Left/Right Ctrl and Alt. Start and Select should map to Enter and Right shift respectively. (Or maybe -/+ for mirroring Nintendo's design? Hmmm...) I hope that makes enough sense to solve this puzzle below...
+</p>
+
+<button id="myButton" class="submit">Clear</button>
+
+<input type="text" size="40" onkeydown="onKey(event)">
+
+<br><p id="keyOut" class="keyOut"></p>
+<br><p id="Secret"></p>
 
 <script>
+	document.getElementById("myButton").addEventListener("click", button);
 	function button() {
-		alert("PINGAS");
+		keys = "";
+		refresh();
+		document.getElementById("Secret").innerHTML = "";
 	}
 	
-	document.getElementById("myButton").addEventListener("click", button);
+	let keys = "";
+	function onKey(event) {
+		let key = event.key;
+		keys += key;
+		refresh();
+		if (keys==="ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightzxEnter") {
+			document.getElementById("Secret").innerHTML = "+30 lives, or something lol";
+		}
+	}
 	
-	
+	function refresh() {
+		document.getElementById("keyOut").innerHTML = keys;
+	}
 	
 </script>
 
