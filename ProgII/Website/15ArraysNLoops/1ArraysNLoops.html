@@ -11,17 +11,23 @@
    Include at least 50 lines of new code.
 </p>
 
+<button onclick="reset();">reset</button>
+
 <p id='output'>
 </p>
 
 <script>
-	let field = [
-	[0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0],
-	[0, 1, 1, 1, 0],
-	[0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0]
-	];
+	let field = [];
+	
+	function reset() {
+		field = [
+		[0, 0, 0, 0, 0],
+		[0, 0, 1, 0, 0],
+		[0, 1, 1, 1, 0],
+		[0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0]
+		];
+	}
 	
 	function update() {
 		let fLen = field.length;
@@ -67,6 +73,8 @@
 		//requestAnimationFrame(update);
 	}
 	
+	// Main
+	reset();
 	window.setInterval(update, 200);
 	
 </script>
