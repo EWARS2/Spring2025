@@ -11,7 +11,63 @@
    Include at least 50 lines of new code.
 </p>
 
+<p id='output'>
+</p>
+
 <script>
+	let field = [
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 1, 1, 1, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0]
+	];
+	
+	function update() {
+		let fLen = field.length;
+		let fWid = field[0].length;
+		let count = 0;
+		let fieldTemp = field.map(row => row.slice());
+		
+		// Test each cell
+		for (let y = 0; y < fLen; y++) {
+			for (let x = 0; x < fWid; x++) {
+				count = 0;
+				
+				// Out of range elements return undefined, which is great...
+				count += Boolean(field[y][x-1]);
+				count += Boolean(field[y][x+1]);
+				// ...except for the fact that you cannot index said result,
+				// so we test it before accessing it.
+				if (field[y+1] != undefined) {
+					count += Boolean(field[y+1][x]);
+					count += Boolean(field[y+1][x+1]);
+					count += Boolean(field[y+1][x-1]);
+				}
+				if (field[y-1] != undefined) {
+					count += Boolean(field[y-1][x]);
+					count += Boolean(field[y-1][x-1]);
+					count += Boolean(field[y-1][x+1]);
+				}
+				
+				// Update based on neighbor count
+				if (count < 2) {fieldTemp[y][x] = 0;}
+				else if (count > 3) {fieldTemp[y][x] = 0;}
+				else if (count == 3) {fieldTemp[y][x] = 1;}
+			}
+		}
+		
+		//Display
+		field = fieldTemp.map(row => row.slice());
+		let output = field.map(element => element).join('<br>');
+		output = output.replaceAll("1", "#");
+		output = output.replaceAll("0", "_");
+		output = output.replaceAll(",", " ");
+		document.getElementById("output").innerHTML = output;
+		//requestAnimationFrame(update);
+	}
+	
+	window.setInterval(update, 200);
 	
 </script>
 </body>
