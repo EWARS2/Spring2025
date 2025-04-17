@@ -11,14 +11,14 @@ def load(path_in):
 
 def pront(s, end="\n"):
     global o
-    o += str(s + end)
+    o += str(s) + end
 
 def format_no(path_in, end=""):
     im, pix = load(path_in)
     for y in range(im.height):
         for x in range(im.width):
-            pront(pix[x, y], end=end)
-        pront()
+            print(pix[x, y], end=end)
+        print()
 
 def format_lobit(path_in, l=None):
     if l is None:
@@ -38,7 +38,7 @@ def format_rgb(path_in):
             pront(f'<div style="background-color: rgb{pix[x,y]};"></div>')
         pront("</div>")
 
-format_rgb("wiki_sample.png")
+format_no("golgun.png", ",")
 
 with open("o.txt", "w") as f:
     f.write(o)
