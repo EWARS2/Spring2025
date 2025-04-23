@@ -3,7 +3,6 @@
 <head>
 <title>Backend</title>
 </head>
-
 <body>
 
 <p>
@@ -17,29 +16,30 @@
 Lesson 18
 </p>
 
-<button type="button" onclick="loadXMLDoc()">Change Content</button>
 
-<div id="demo">Bazinga
-</div>
+<select id="method" name="method">
+	<option value="GET">GET</option>
+	<option value="POST">POST</option>
+</select>
+URL: <input id="url" name="url" value='https://supersimplebackend.dev'/>
+<button onclick="update(method.value, url.value);">Submit</button>
+
+
+<p id="demo"></p>
 
 <script>
 	const xhr = new XMLHttpRequest();
 	
 	xhr.addEventListener('load', () => {
 		console.log(xhr.response);
+		document.getElementById("demo").innerHTML = xhr.responseText;
 	});
 	
-	xhr.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-			document.getElementById("demo").innerHTML = this.responseText;
-		}
-	};
-	
-	xhr.open('POST', 'https://supersimplebackend.dev/greeting', 'John');
-	xhr.send();
-	
-	
-	
+	function update(method, url) {
+		xhr.open(method, url);
+		xhr.send();
+	}
+
 </script>
 </body>
 </html>
