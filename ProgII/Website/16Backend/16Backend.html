@@ -17,7 +17,27 @@
 Lesson 18
 </p>
 
+<button type="button" onclick="loadXMLDoc()">Change Content</button>
+
+<div id="demo">Bazinga
+</div>
+
 <script>
+	const xhr = new XMLHttpRequest();
+	
+	xhr.addEventListener('load', () => {
+		console.log(xhr.response);
+	});
+	
+	xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+			document.getElementById("demo").innerHTML = this.responseText;
+		}
+	};
+	
+	xhr.open('POST', 'https://supersimplebackend.dev/greeting', 'John');
+	xhr.send();
+	
 	
 	
 </script>
