@@ -20,8 +20,9 @@ Lesson 18
 	<option value="POST">POST</option>
 </select>
 URL: <input id="url" name="url" value='https://supersimplebackend.dev/greeting'>
-JSON: <input id="data" name="data" value='{"name":"John"}'>
-<button onclick="update(method.value, url.value, data.value);">Submit</button>
+Data: <input id="data" name="data" value='{"name":"John"}'>
+Content Type: <input id="data_type" name="data_type" value='application/json'>
+<button onclick="update(method.value, url.value, data.value, data_type.value);">Submit</button>
 
 <p id="demo"></p>
 
@@ -32,14 +33,14 @@ JSON: <input id="data" name="data" value='{"name":"John"}'>
 		document.getElementById("demo").innerHTML = xhr.responseText;
 	});
 	
-	function update(method, url, data) {
+	function update(method, url, data, data_type) {
 		//console.log(data);
 		//data = JSON.parse(data);
 		//console.log(data);
 		//data = JSON.stringify(data);
 		//console.log(data);
 		xhr.open(method, url, true);
-		xhr.setRequestHeader('Content-Type', 'application/json');
+		xhr.setRequestHeader('Content-Type', data_type);
 		xhr.send(data);
 	}
 	
@@ -47,6 +48,7 @@ JSON: <input id="data" name="data" value='{"name":"John"}'>
 		document.getElementById("method").value = 'POST';
 		document.getElementById("url").value = "https://supersimplebackend.dev/greeting";
 		document.getElementById("data").value = '{"name":"John"}';
+		document.getElementById("data_type").value = 'application/json';
 	}
 	defaults();
 	
