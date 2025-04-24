@@ -4,42 +4,39 @@
 <title>Backend</title>
 </head>
 <body>
-
 <p>
 1. Add a feature to your program that communicates with a backend.
    Make sure that you can send and receive messages.
    Demonstrate this functionality with your app.
    This should be at least 50 lines of new code.
 </p>
-
 <p>
 Lesson 18
 </p>
-
-
 <select id="method" name="method">
 	<option value="GET">GET</option>
 	<option value="POST">POST</option>
 </select>
-URL: <input id="url" name="url" value='https://supersimplebackend.dev'/>
-<button onclick="update(method.value, url.value);">Submit</button>
-
-
+URL: <input id="url" name="url" value='https://supersimplebackend.dev/greeting'>
+JSON: <input id="data" name="data" value='{"name":"John"}'>
+<button onclick="update(method.value, url.value, data.value);">Submit</button>
 <p id="demo"></p>
-
 <script>
 	const xhr = new XMLHttpRequest();
-	
 	xhr.addEventListener('load', () => {
 		console.log(xhr.response);
 		document.getElementById("demo").innerHTML = xhr.responseText;
 	});
-	
-	function update(method, url) {
-		xhr.open(method, url);
-		xhr.send();
+	function update(method, url, data) {
+		//console.log(data);
+		//data = JSON.parse(data);
+		//console.log(data);
+		//data = JSON.stringify(data);
+		//console.log(data);
+		xhr.open(method, url, true);
+		xhr.setRequestHeader('Content-Type', 'application/json');
+		xhr.send(data);
 	}
-
 </script>
 </body>
 </html>
