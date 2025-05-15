@@ -1,4 +1,5 @@
-# WIP
+import itertools
+
 """
 adjacency = [
     [0, 500, 200, 185, 205],
@@ -37,12 +38,23 @@ def cost(route=my_route, adjacency=my_adjacency):
         spot = i
     return cost
 
-
+"""
 routes = [
     "D-A-B-E-F-C-D",
     "B-E-D-A-C-F-B",
     "C-F-E-D-A-B-C",
     "A-D-E-B-C-F-A"
 ]
+
 for i in routes:
     print(cost(i.replace('-', '')))
+"""
+
+
+permutations = itertools.permutations("ABCDEF")
+costs = []
+for p in permutations:
+    p = ''.join(p)
+    costs.append(cost(p + p[0]))
+
+print(max(costs))
