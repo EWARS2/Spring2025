@@ -28,15 +28,22 @@ def letter_to_num(s):
         out += str(alpha.index(i))
     return out
 
-
 def cost(route=my_route, adjacency=my_adjacency):
-    route = letter_to_num(route)
+    route = letter_to_num(route.replace('-', ''))
     cost = 0
     spot = route[0]
     for i in route:
         cost+=adjacency[int(spot)][int(i)]
         spot = i
     return cost
+
+def calc_all(vertices="ABCDEF", adjacency=my_adjacency):
+    permutations = itertools.permutations(vertices)
+    costs = []
+    for p in permutations:
+        p = ''.join(p)
+        costs.append(cost(p + p[0], adjacency))
+    return costs
 
 """
 routes = [
@@ -47,14 +54,10 @@ routes = [
 ]
 
 for i in routes:
-    print(cost(i.replace('-', '')))
+    print(cost(i))
 """
 
 
-permutations = itertools.permutations("ABCDEF")
-costs = []
-for p in permutations:
-    p = ''.join(p)
-    costs.append(cost(p + p[0]))
 
-print(max(costs))
+
+print(max(calc_all()))
