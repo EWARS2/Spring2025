@@ -38,7 +38,7 @@ def format_rgb(path_in):
             pront(f'<div style="background-color: rgb{pix[x,y]};"></div>')
         pront("</div>")
 
-format_no("golgun.png", ",")
+format_no("text.png", "")
 
 with open("o.txt", "w") as f:
     f.write(o)
