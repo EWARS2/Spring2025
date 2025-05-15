@@ -64,12 +64,12 @@ def schedule(pref=my_preference, project=my_project, processors=2):
         # Update output
         for i in range(len(p)):
             o[i] += p[i]
-    
+
     return o
 
 def printnice(pref=my_preference, project=my_project, processors=2):
     l = schedule(pref, project, processors)
     for i in l:
-        print(i)
+        print(",".join(i))
 
 printnice()
