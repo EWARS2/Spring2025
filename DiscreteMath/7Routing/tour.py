@@ -39,11 +39,13 @@ def cost(route=my_route, adjacency=my_adjacency):
 
 def calc_all(vertices="ABCDEF", adjacency=my_adjacency):
     permutations = itertools.permutations(vertices)
-    costs = []
+    costs = {}
     for p in permutations:
         p = ''.join(p)
-        costs.append(cost(p + p[0], adjacency))
+        costs[p] = cost(p + p[0], adjacency)
     return costs
+
+
 
 """
 routes = [
@@ -58,6 +60,9 @@ for i in routes:
 """
 
 
-
-
-print(max(calc_all()))
+"""
+my_dict = calc_all()
+my_max = max(my_dict, key=my_dict.get)
+print(my_max)
+print(my_dict[my_max])
+"""
