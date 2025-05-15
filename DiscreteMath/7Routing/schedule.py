@@ -25,11 +25,13 @@ def schedule(pref=my_preference, project=my_project, processors=2):
         p.append(EMPTY_CHAR)
 
     # Run until all tasks have completed
+    t = 0
     while len(pref) > 0:
         # For every processor,
         for i in range(len(p)):
             # assign it a task that is not taken
             # by checking if the current task is valid
+            # TODO: precedence
             x = 0
             while p[i] not in pref:
                 if pref[x] in p:
@@ -41,12 +43,19 @@ def schedule(pref=my_preference, project=my_project, processors=2):
                     break
 
 
+        # Remove finished tasks from queue
         for i in p:
-            pref = pref.replace(i, '')
+            if i != EMPTY_CHAR:
+                project[i][0] -= 1
+                if project[i][0]<=0:
+                    pref = pref.replace(i, '')
 
 
-        print(p)
-        print(pref)
-        # break
+        # Update output
+        for i in range(len(p)):
+            o[i] += p[i]
+
+
+    print(o)
 
 schedule()
