@@ -25,23 +25,34 @@ def schedule(pref=my_preference, project=my_project, processors=2):
         p.append(EMPTY_CHAR)
 
     # Run until all tasks have completed
-    t = 0
     while len(pref) > 0:
         # For every processor,
         for i in range(len(p)):
             # assign it a task that is not taken
-            # by checking if the current task is valid
-            # TODO: precedence
+            # by testing every task if valid
             x = 0
             while p[i] not in pref:
-                if pref[x] in p:
+                # Test precedence
+                is_ineligible = False
+                for j in project[pref[x]][1]:
+                    #print(j)
+                    #print(pref)
+                    if j in pref:
+                        is_ineligible = True
+
+                # If task is already queued
+                # or if it's ineligible...
+                if pref[x] in p or is_ineligible:
+                    # increment counter to test the next one
                     x += 1
                 else:
+                    # else, select that task.
                     p[i] = pref[x]
+
+                # If at the end of the list, set processor to idle
                 if x >= len(pref):
                     p[i] = EMPTY_CHAR
                     break
-
 
         # Remove finished tasks from queue
         for i in p:
@@ -50,12 +61,15 @@ def schedule(pref=my_preference, project=my_project, processors=2):
                 if project[i][0]<=0:
                     pref = pref.replace(i, '')
 
-
         # Update output
         for i in range(len(p)):
             o[i] += p[i]
+    
+    return o
 
+def printnice(pref=my_preference, project=my_project, processors=2):
+    l = schedule(pref, project, processors)
+    for i in l:
+        print(i)
 
-    print(o)
-
-schedule()
+printnice()
