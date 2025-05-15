@@ -20,8 +20,6 @@ my_adjacency = [
 
 my_route = 'DABEFCD'
 
-
-
 def letter_to_num(s):
     alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     out = ''
@@ -33,9 +31,18 @@ def letter_to_num(s):
 def cost(route=my_route, adjacency=my_adjacency):
     route = letter_to_num(route)
     cost = 0
+    spot = route[0]
     for i in route:
-        print(adjacency[0][int(i)])
-
+        cost+=adjacency[int(spot)][int(i)]
+        spot = i
     return cost
 
-print(cost())
+
+routes = [
+    "D-A-B-E-F-C-D",
+    "B-E-D-A-C-F-B",
+    "C-F-E-D-A-B-C",
+    "A-D-E-B-C-F-A"
+]
+for i in routes:
+    print(cost(i.replace('-', '')))
