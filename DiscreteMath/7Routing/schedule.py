@@ -1,4 +1,6 @@
 #WIP
+EMPTY_CHAR = '-'
+
 my_preference = 'ABCDEFGHIJK'
 my_project = {
     'A': [ 2, ''],
@@ -15,12 +17,14 @@ my_project = {
 }
 
 def schedule(pref=my_preference, project=my_project, processors=2):
+    # Create strings for each output and processor
     o = []
     p = []
     for i in range(processors):
         o.append('')
-        p.append(' ')
+        p.append(EMPTY_CHAR)
 
+    # Run until all tasks have completed
     while len(pref) > 0:
         # For every processor,
         for i in range(len(p)):
@@ -32,15 +36,17 @@ def schedule(pref=my_preference, project=my_project, processors=2):
                     x += 1
                 else:
                     p[i] = pref[x]
+                if x >= len(pref):
+                    p[i] = EMPTY_CHAR
+                    break
 
 
         for i in p:
-            print (i)
-            pref.replace(i, '')
+            pref = pref.replace(i, '')
 
 
         print(p)
         print(pref)
-        break
+        # break
 
 schedule()
