@@ -91,7 +91,7 @@ def string_nice(processors=2, pref=my_preference, project=None):
     s = ''
     l = schedule(processors, pref, project)
     for i in range(len(l[0])):
-        s += str(i) + ','
+        s += str(i+1) + ','
     s += '\n'
     for i in l:
         s += ",".join(i) + '\n'
@@ -105,4 +105,4 @@ def write(path="o.txt", s=""):
 write('1.csv', string_nice(2, my_preference))
 write('2.csv', string_nice(4, my_preference))
 write('4.csv', string_nice(3, decreasing_pref(my_project)))
-write('5.csv', string_nice(2, ''))
+write('5.csv', string_nice(2, 'ABEDFICGKHJ'))
