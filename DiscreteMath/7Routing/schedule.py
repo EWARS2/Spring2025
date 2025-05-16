@@ -67,17 +67,30 @@ def schedule(pref=my_preference, project=my_project, processors=2):
 
     return o
 
-def decreasing_pref(pref=my_preference, project=my_project):
-    for i in project.values():
-        print(i[0])
+def decreasing_pref(project=my_project):
+    o = {}
+    for i in project:
+        o[i] = project[i][0]
+    o = dict(sorted(o.items(), key=lambda item: item[1], reverse=True))
+    o = list(o)
+    return "".join(o)
 
-def printnice(pref=my_preference, project=my_project, processors=4):
+
+def string_nice(pref=my_preference, project=my_project, processors=2):
+    s = ''
     l = schedule(pref, project, processors)
     for i in range(len(l[0])):
-        print(i, end=",")
-    print()
+        s += str(i) + ','
+    s += '\n'
     for i in l:
-        print(",".join(i))
+        s += ",".join(i) + '\n'
+    return s
 
-# printnice()
-print(decreasing_pref())
+def write(path="o.txt", s=""):
+    with open(path, "w") as f:
+        f.write(s)
+        f.close()
+
+write('1.csv', string_nice(my_preference, my_project, 2))
+write('2.csv', string_nice(my_preference, my_project, 4))
+write('4.csv', string_nice(decreasing_pref(my_project), my_project, 3))
