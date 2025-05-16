@@ -67,7 +67,11 @@ def schedule(pref=my_preference, project=my_project, processors=2):
 
     return o
 
-def printnice(pref=my_preference, project=my_project, processors=2):
+def decreasing_pref(pref=my_preference, project=my_project):
+    for i in project.values():
+        print(i[0])
+
+def printnice(pref=my_preference, project=my_project, processors=4):
     l = schedule(pref, project, processors)
     for i in range(len(l[0])):
         print(i, end=",")
@@ -75,4 +79,5 @@ def printnice(pref=my_preference, project=my_project, processors=2):
     for i in l:
         print(",".join(i))
 
-printnice()
+# printnice()
+print(decreasing_pref())
