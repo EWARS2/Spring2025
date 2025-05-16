@@ -1,4 +1,6 @@
 #WIP
+import copy
+
 EMPTY_CHAR = '-'
 
 my_preference = 'ABCDEFGHIJK'
@@ -16,7 +18,10 @@ my_project = {
     'K': [20, 'IG']
 }
 
-def schedule(pref=my_preference, project=my_project, processors=2):
+def schedule(processors=2, pref=my_preference, project=None):
+    if project is None:
+        project = copy.deepcopy(my_project)
+
     # Create strings for each output and processor
     o = []
     p = []
@@ -67,7 +72,10 @@ def schedule(pref=my_preference, project=my_project, processors=2):
 
     return o
 
-def decreasing_pref(project=my_project):
+def decreasing_pref(project=None):
+    if project is None:
+        project = copy.deepcopy(my_project)
+
     o = {}
     for i in project:
         o[i] = project[i][0]
@@ -76,9 +84,12 @@ def decreasing_pref(project=my_project):
     return "".join(o)
 
 
-def string_nice(pref=my_preference, project=my_project, processors=2):
+def string_nice(processors=2, pref=my_preference, project=None):
+    if project is None:
+        project = copy.deepcopy(my_project)
+
     s = ''
-    l = schedule(pref, project, processors)
+    l = schedule(processors, pref, project)
     for i in range(len(l[0])):
         s += str(i) + ','
     s += '\n'
@@ -91,6 +102,7 @@ def write(path="o.txt", s=""):
         f.write(s)
         f.close()
 
-write('1.csv', string_nice(my_preference, my_project, 2))
-write('2.csv', string_nice(my_preference, my_project, 4))
-write('4.csv', string_nice(decreasing_pref(my_project), my_project, 3))
+write('1.csv', string_nice(2, my_preference))
+write('2.csv', string_nice(4, my_preference))
+write('4.csv', string_nice(3, decreasing_pref(my_project)))
+write('5.csv', string_nice(2, ''))
