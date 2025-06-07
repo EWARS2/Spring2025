@@ -19,7 +19,7 @@ def display(directory="frames"):
 
 def generate():
     file = open("output.txt", "w")
-    chars=['\\', '/']
+    chars=['-', '+','%','/']
     #chars=['#']
     for i in range(24):
         s = ''
@@ -29,5 +29,5 @@ def generate():
         file.write(s)
     file.close()
 
-#generate()
+generate()
 display()
