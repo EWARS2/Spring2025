@@ -1,6 +1,6 @@
 import os
 import random
-import keyboard
+#import keyboard
 from time import sleep
 
 
